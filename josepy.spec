@@ -4,7 +4,7 @@
 #
 Name     : josepy
 Version  : 1.1.0
-Release  : 3
+Release  : 4
 URL      : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
 Summary  : JOSE protocol implementation in Python
