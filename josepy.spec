@@ -6,32 +6,27 @@
 #
 Name     : josepy
 Version  : 1.1.0
-Release  : 11
+Release  : 12
 URL      : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
 Source99 : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz.asc
 Summary  : JOSE protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: josepy-bin
-Requires: josepy-python3
-Requires: josepy-python
-Requires: Sphinx
-Requires: coverage
+Requires: josepy-bin = %{version}-%{release}
+Requires: josepy-license = %{version}-%{release}
+Requires: josepy-python = %{version}-%{release}
+Requires: josepy-python3 = %{version}-%{release}
 Requires: cryptography
 Requires: pyOpenSSL
 Requires: setuptools
 Requires: six
-Requires: sphinx_rtd_theme
+BuildRequires : buildreq-distutils3
 BuildRequires : cryptography
-BuildRequires : pbr
-BuildRequires : pip
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pytest
-
-BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : six
 BuildRequires : tox
@@ -45,15 +40,24 @@ to use appropriate extension for vector filenames: .pem for PEM and
 %package bin
 Summary: bin components for the josepy package.
 Group: Binaries
+Requires: josepy-license = %{version}-%{release}
 
 %description bin
 bin components for the josepy package.
 
 
+%package license
+Summary: license components for the josepy package.
+Group: Default
+
+%description license
+license components for the josepy package.
+
+
 %package python
 Summary: python components for the josepy package.
 Group: Default
-Requires: josepy-python3
+Requires: josepy-python3 = %{version}-%{release}
 
 %description python
 python components for the josepy package.
@@ -76,12 +80,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1528563203
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1541267084
+python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/josepy
+cp LICENSE.txt %{buildroot}/usr/share/package-licenses/josepy/LICENSE.txt
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -92,6 +98,10 @@ echo ----[ mark ]----
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/jws
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/josepy/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
