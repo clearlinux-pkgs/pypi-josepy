@@ -6,7 +6,7 @@
 #
 Name     : josepy
 Version  : 1.1.0
-Release  : 19
+Release  : 20
 URL      : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
 Source0  : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
 Source1  : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz.asc
@@ -34,19 +34,8 @@ BuildRequires : virtualenv
 
 %description
 JOSE protocol implementation in Python using cryptography
-
 .. image:: https://travis-ci.org/certbot/josepy.svg?branch=master
-  :target: https://travis-ci.org/certbot/josepy
-
-.. image:: https://codecov.io/gh/certbot/josepy/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/certbot/josepy
-
-.. image:: https://readthedocs.org/projects/josepy/badge/?version=latest
-  :target: http://josepy.readthedocs.io/en/latest/?badge=latest
-
-Originally developed as part of the ACME_ protocol implementation.
-
-.. _ACME: https://pypi.python.org/pypi/acme
+:target: https://travis-ci.org/certbot/josepy
 
 %package bin
 Summary: bin components for the josepy package.
@@ -79,21 +68,10 @@ Summary: python3 components for the josepy package.
 Group: Default
 Requires: python3-core
 Provides: pypi(josepy)
-Requires: pypi(tox)
-Requires: pypi(flake8)
-Requires: pypi(pytest-flake8)
-Requires: pypi(pytest)
-Requires: pypi(pytest-cov)
-Requires: pypi(mock)
-Requires: pypi(pytest-cache)
-Requires: pypi(coverage)
-Requires: pypi(six)
-Requires: pypi(cryptography)
 Requires: pypi(PyOpenSSL)
+Requires: pypi(cryptography)
 Requires: pypi(setuptools)
-Requires: pypi(sphinx-rtd-theme)
-Requires: pypi(Sphinx)
-Requires: pypi(pytest)
+Requires: pypi(six)
 
 %description python3
 python3 components for the josepy package.
@@ -108,8 +86,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583293097
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1583447788
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
