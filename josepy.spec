@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4D17C995CD9775F2 (letsencrypt-client@eff.org)
 #
 Name     : josepy
-Version  : 1.1.0
-Release  : 30
-URL      : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
-Source0  : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz
-Source1  : https://pypi.python.org/packages/b6/19/d6bee2676ce84d7ea2ea2ee1fb16cf63024afcc1e3c9455ea3e044f77318/josepy-1.1.0.tar.gz.asc
+Version  : 1.10.0
+Release  : 31
+URL      : https://files.pythonhosted.org/packages/27/21/e228c5931c18882419590d5cb5306f124f7eb653146c7918efe78c81b553/josepy-1.10.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/27/21/e228c5931c18882419590d5cb5306f124f7eb653146c7918efe78c81b553/josepy-1.10.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/27/21/e228c5931c18882419590d5cb5306f124f7eb653146c7918efe78c81b553/josepy-1.10.0.tar.gz.asc
 Summary  : JOSE protocol implementation in Python
 Group    : Development/Tools
 License  : Apache-2.0
@@ -20,7 +20,6 @@ Requires: josepy-python3 = %{version}-%{release}
 Requires: cryptography
 Requires: pyOpenSSL
 Requires: setuptools
-Requires: six
 BuildRequires : buildreq-distutils3
 BuildRequires : cryptography
 BuildRequires : pluggy
@@ -28,14 +27,13 @@ BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pytest
 BuildRequires : setuptools
-BuildRequires : six
 BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
 JOSE protocol implementation in Python using cryptography
-.. image:: https://travis-ci.org/certbot/josepy.svg?branch=master
-:target: https://travis-ci.org/certbot/josepy
+.. image:: https://github.com/certbot/josepy/actions/workflows/check.yaml/badge.svg
+:target: https://github.com/certbot/josepy/actions/workflows/check.yaml
 
 %package bin
 Summary: bin components for the josepy package.
@@ -71,26 +69,25 @@ Provides: pypi(josepy)
 Requires: pypi(cryptography)
 Requires: pypi(pyopenssl)
 Requires: pypi(setuptools)
-Requires: pypi(six)
 
 %description python3
 python3 components for the josepy package.
 
 
 %prep
-%setup -q -n josepy-1.1.0
-cd %{_builddir}/josepy-1.1.0
+%setup -q -n josepy-1.10.0
+cd %{_builddir}/josepy-1.10.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583454359
+export SOURCE_DATE_EPOCH=1633455845
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
@@ -99,7 +96,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/josepy
-cp %{_builddir}/josepy-1.1.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/josepy/d095fa0d394cc9417a65aecd0d28e7d10e762f98
+cp %{_builddir}/josepy-1.10.0/LICENSE.txt %{buildroot}/usr/share/package-licenses/josepy/d095fa0d394cc9417a65aecd0d28e7d10e762f98
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
