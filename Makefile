@@ -1,5 +1,5 @@
 PKG_NAME := pypi-josepy
-URL = https://files.pythonhosted.org/packages/2c/cd/684c45107851da4507854ef4b16fcdce448e02668f0e7c359d0558cbfbeb/josepy-1.14.0.tar.gz
+URL = https://files.pythonhosted.org/packages/c1/8a/cd416f56cd4492878e8d62701b4ad32407c5ce541f247abf31d6e5f3b79b/josepy-1.15.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
